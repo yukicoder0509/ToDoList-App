@@ -1,7 +1,11 @@
-const App = () => {
+import List from './components/List';
+
+function App(){
   return (
-    <div>App</div>
-  )
+    <div>
+      <List />
+    </div>
+  );
 }
 
-export default App
+export default App;
