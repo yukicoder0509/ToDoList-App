@@ -1,0 +1,14 @@
+{
+    "ToDoList": [
+        {
+            "id": 1,
+            "content": "Task 1",
+            "status": "Done"
+        },
+        {
+            "id": 2,
+            "content": "Task 2",
+            "status": "Not Done"
+        }
+    ]
+}
