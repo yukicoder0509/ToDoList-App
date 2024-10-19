@@ -1,5 +1,5 @@
 import ToDo from "./ToDo";
-import data from "../ToDoList.json";
+import { useEffect, useState} from "react";
 
 type TaskProps = {
     id: number,
@@ -8,10 +8,20 @@ type TaskProps = {
 };
 
 function List() {
+    const [ToDoList, setToDoList] = useState([]);
+
+    useEffect(function() {
+        const apiURL:string = "/api/ToDoList"
+        fetch(apiURL).then((response) => response.json())
+                     .then((data) => setToDoList(data))
+                     .catch(() => console.log("Error fetching data"));
+    },[])
     return (
         <div>
         <ul className="list-image-none bg-green-200">
-            {data.ToDoList.map((task: TaskProps)=>(<ToDo key={task.id} id={task.id} content={task.content} status={task.status}/>))}
+            {ToDoList.map((task: TaskProps)=>
+                (<ToDo key={task.id} id={task.id} content={task.content} status={task.status}/>)
+            )}
         </ul>
         </div>
     );
