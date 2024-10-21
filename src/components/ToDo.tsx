@@ -9,21 +9,19 @@ type ToDoProps = {
 
 function ToDo({id, content, status}: ToDoProps) {
     const [state, setState] = useState(status);
-    let imgpath: string = (state=="Done") ? "checkmark.jpg" : "";
+    const [imgpath, setImgpath] = useState((status=="Done") ? "checkmark.jpg" : "");
 
     function handleClick(){
-        if(state=="Done"){
-            setState("Not Done");
-            console.log(`task ${id} Not Done`);
-        }
-        else{
-            setState("Done");
-            console.log(`task ${id} Done`);
-        }
+        const newState = state === "Done" ? "Not Done" : "Done";
+        setState(newState);
+        //now the component is re-rendered with the new state
+
+        console.log(`task ${id} ${state}`);//the state is the old one
+
         const updatedTask = {
             id: id,
             content: content,
-            status: state,
+            status: newState,
         };
         fetch(`/api/ToDoList/${id}`, {
             method: "PUT",
@@ -31,9 +29,11 @@ function ToDo({id, content, status}: ToDoProps) {
                 "content-type": "application/json",
             },
             body: JSON.stringify(updatedTask),
-        }).then(() => console.log(updatedTask)).catch(() => console.log("Error updating task"));
-        imgpath = (state=="Done") ? "checkmark.jpg" : "";
-        
+        }).then(() => console.log(updatedTask))
+          .catch(() => console.log("Error updating task"));
+
+        setImgpath((newState=="Done") ? "checkmark.jpg" : "");
+        //now the component is re-rendered with the new state
     }
 
     return (
