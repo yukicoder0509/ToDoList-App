@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function EditPage() {
+    const navigate = useNavigate();
+
     const [task, setTask] = useState({
         id:1,
         content: "",
@@ -31,6 +33,7 @@ function EditPage() {
             },
             body: JSON.stringify(updatedTask),
         })
+        .then(() => navigate("/"))
     }
 
   return (

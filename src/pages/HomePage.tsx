@@ -1,8 +1,12 @@
 import List from "../components/List";
+import AddTask from "../components/AddTask";
 
 function HomePage() {
   return (
-    <List />
+    <>
+      <List />
+      <AddTask />
+    </>
   );
 }
 

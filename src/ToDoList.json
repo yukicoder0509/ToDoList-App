@@ -2,12 +2,17 @@
   "ToDoList": [
     {
       "id": "1",
-      "content": "homework1",
-      "status": "Not Done"
+      "content": "homework 2",
+      "status": "Done"
     },
     {
       "id": "2",
       "content": "homework",
+      "status": "Not Done"
+    },
+    {
+      "id": "95bf",
+      "content": "Dulingo",
       "status": "Done"
     }
   ]

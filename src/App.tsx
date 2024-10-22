@@ -1,5 +1,6 @@
 import HomePage from "./pages/HomePage";
 import EditPage from "./pages/EditPage";
+import AddTaskPage from "./pages/AddTaskPage";
 //import MainLayout from "./layout/MainLayout";
 import {Route, 
         createBrowserRouter, 
@@ -13,6 +14,7 @@ function App(){
       <>
         <Route index element={<HomePage />} />
         <Route path="/edit/:id" element={<EditPage />} />
+        <Route path="/addtask" element={<AddTaskPage />} />
       </>
     )
   );
