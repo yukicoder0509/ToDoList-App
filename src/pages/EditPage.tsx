@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-function EditPage() {
-    const navigate = useNavigate();
+type EditPageProps = {
+    UpdateTaskSubmit: Function;
+}
 
+function EditPage({UpdateTaskSubmit}: EditPageProps) {
+    const navigate = useNavigate();
     const [task, setTask] = useState({
         id:1,
         content: "",
@@ -25,15 +28,10 @@ function EditPage() {
             content: content,
             status: task.status,
         };
-        const apiURL:string = `/api/ToDoList/${id}`
-        fetch(apiURL, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedTask),
-        })
-        .then(() => navigate("/"))
+        
+        UpdateTaskSubmit(updatedTask);
+
+        navigate("/");
     }
 
   return (

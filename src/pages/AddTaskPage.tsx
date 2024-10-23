@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function AddTaskPage() {
+type AddTaskPageProps = {
+    AddTaskSubmit: Function;
+}
+
+function AddTaskPage({AddTaskSubmit}: AddTaskPageProps) {
     const [content, setContent] = useState("");
     const navigate = useNavigate();
     
@@ -12,15 +16,7 @@ function AddTaskPage() {
             content: content,
             status: "Not Done",
         }
-        const apiURL:string = "/api/ToDoList"
-        fetch(apiURL, {
-            method: "POST",
-            headers:{
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newTask)
-        }).then(() => console.log(`Task added: ${newTask.content}`))
-            .catch(() => console.log("Error adding task"));
+        AddTaskSubmit(newTask);
         
         navigate("/");
     }
