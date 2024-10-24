@@ -1,14 +1,10 @@
 import List from "../components/List";
 import AddTaskButton from "../components/AddTaskButton";
 
-type HomePageProps ={
-  DeleteTaskSubmit: Function;
-}
-
-function HomePage({DeleteTaskSubmit}: HomePageProps) {
+function HomePage() {
   return (
     <>
-      <List DeleteTaskSubmit={DeleteTaskSubmit}/>
+      <List />
       <AddTaskButton />
     </>
   );
