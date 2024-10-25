@@ -19,10 +19,10 @@ function AddTaskPage() {
   };
   return (
     <form onSubmit={submitForm} className="ml-20">
-      <label>New Task</label>
+      <label className="font-bold  text-2xl">New Task</label>
       <input
         type="text"
-        className="border m-4"
+        className="border-2 border-gray-400 m-4  text-2xl"
         required
         value={content}
         onChange={(e) => setContent(e.target.value)}

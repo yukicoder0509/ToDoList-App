@@ -20,7 +20,7 @@ function EditPage() {
     });
   }, []);
 
-  function handleClick() {
+  function submitForm() {
     const updatedTask = {
       id: task.id,
       content: content,
@@ -33,21 +33,21 @@ function EditPage() {
   }
 
   return (
-    <div className="w-4/12 ml-40">
-      <label className="block font-bold mb-5 text-2xl">Content</label>
+    <form onSubmit={submitForm} className="ml-20">
+      <label className="font-bold  text-2xl">Content</label>
       <input
         type="text"
-        className="border-gray-400 border-2 rounded w-full mb-4 text-2xl"
+        className="border-2 border-gray-400 m-4  text-2xl"
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
       <button
-        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex w-24"
-        onClick={handleClick}
+        type="submit"
+        className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-full ml-4"
       >
         Update
       </button>
-    </div>
+    </form>
   );
 }
 

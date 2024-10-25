@@ -11,8 +11,8 @@ function List() {
   }, []);
 
   return (
-    <div>
-      <ul className="list-image-none">
+    <div className="">
+      <ul className="list-image-none mb-10">
         {ToDoList.map((task: TaskProps) => (
           <ToDo
             key={task.id}
