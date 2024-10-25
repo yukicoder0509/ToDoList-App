@@ -36,31 +36,36 @@ function ToDo({ id, content, status, setToDoList }: ToDoProps) {
   }
 
   function handleDeleteButton() {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this task?"
+    );
+    if (!confirm) return;
+
     DeleteTask(id);
     FetchToDoList().then((data) => setToDoList(data));
   }
 
   return (
-    <li className="m-4 border-8 border-transparent">
+    <li className="m-4 w-6/12 flex items-center">
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex w-24"
+        className="rounded inline-flex w-10 h-10 mr-2 border-blue-600 border-2"
         onClick={handleCheckButton}
       >
-        <img src={imgpath} className="w-5 h-5"></img>
-        Check
+        {imgpath == "" ? <></> : <img src={imgpath} className="size-fit"></img>}
+        {/* Check */}
       </button>
-
-      <h1 className="inline-flex border-l-4 border-transparent">{content}</h1>
-
+      <div className="w-7/12 ml-2 inline-flex border-b-2 border-blue-200">
+        <h1 className="inline-flex font-blod text-2xl">{content}</h1>
+      </div>
       <Link
         to={`/edit/${id}`}
-        className="bg-indigo-600 py-2 px-4 rounded-full ml-4"
+        className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-full inline-flex mx-2"
       >
         Edit
       </Link>
 
       <button
-        className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-full inline-flex"
+        className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-full inline-flex mx-2"
         onClick={() => handleDeleteButton()}
       >
         Delete

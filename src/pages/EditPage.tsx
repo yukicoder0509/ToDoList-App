@@ -33,11 +33,11 @@ function EditPage() {
   }
 
   return (
-    <div>
-      <label className="block font-bold m-6">Content</label>
+    <div className="w-4/12 ml-40">
+      <label className="block font-bold mb-5 text-2xl">Content</label>
       <input
         type="text"
-        className="border rounded w-full m-6"
+        className="border-gray-400 border-2 rounded w-full mb-4 text-2xl"
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
