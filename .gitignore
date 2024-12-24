@@ -1,2 +1,3 @@
 backendenv/
 venv/
+**/__pycache__/

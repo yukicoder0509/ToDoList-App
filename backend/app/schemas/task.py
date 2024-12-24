@@ -7,6 +7,7 @@ class TaskCreate(TaskBase):
     pass
 
 class TaskRead(TaskBase):
+    id: int
     status: bool # 0 for incomplete, 1 for complete
 
 class TaskUpdate(TaskBase):
