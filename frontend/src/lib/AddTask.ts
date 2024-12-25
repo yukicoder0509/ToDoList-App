@@ -4,7 +4,7 @@ type NewTaskProps = {
 };
 
 function AddTask(Task: NewTaskProps) {
-  const apiURL: string = "/api/ToDoList";
+  const apiURL: string = "/api/tasks";
   return fetch(apiURL, {
     method: "POST",
     headers: {

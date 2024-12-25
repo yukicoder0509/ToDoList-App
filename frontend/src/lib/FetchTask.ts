@@ -1,5 +1,5 @@
 function FetchTask(id: string | undefined) {
-  const apiURL: string = `/api/ToDoList/${id}`;
+  const apiURL: string = `/api/tasks/${id}`;
   return fetch(apiURL)
     .then((response) => response.json())
     .catch(() => console.log("Error fetching data"));

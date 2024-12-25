@@ -7,31 +7,26 @@ import UpdateTask from "../lib/UpdateTask";
 type ToDoProps = {
   id: number;
   content: string;
-  status: string;
+  status: boolean;
   setToDoList: (value: React.SetStateAction<never[]>) => void;
 };
 
 function ToDo({ id, content, status, setToDoList }: ToDoProps) {
   const [state, setState] = useState(status);
-  const [imgpath, setImgpath] = useState(
-    status == "Done" ? "checkmark.jpg" : ""
-  );
+  const [imgpath, setImgpath] = useState(status ? "checkmark.jpg" : "");
 
   function handleCheckButton() {
-    const newState = state === "Done" ? "Not Done" : "Done";
-    setState(newState);
+    setState((prev) => !prev);
     //now the component is re-rendered with the new state
-
-    console.log(`task ${id} ${state}`); //the state is the old one
 
     const updatedTask = {
       id: id,
       content: content,
-      status: newState,
+      status: state,
     };
-    UpdateTask(updatedTask).then(() => console.log(`task ${id} ${newState}`));
+    UpdateTask(updatedTask).then(() => console.log(`task ${id} ${state}`));
 
-    setImgpath(newState == "Done" ? "checkmark.jpg" : "");
+    setImgpath(state ? "checkmark.jpg" : "");
     //now the component is re-rendered with the new state
   }
 

@@ -1,6 +1,6 @@
 type TaskProps = {
   id: number;
   content: string;
-  status: string;
+  status: boolean;
 };
 export default TaskProps;

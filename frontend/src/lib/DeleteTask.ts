@@ -1,5 +1,5 @@
 function DeleteTask(id: string | number | undefined) {
-  const apiURL: string = `/api/ToDoList/${id}`;
+  const apiURL: string = `/api/tasks/${id}`;
   fetch(apiURL, {
     method: "DELETE",
     headers: {

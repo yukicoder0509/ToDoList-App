@@ -2,25 +2,26 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import FetchTask from "../lib/FetchTask";
 import UpdateTask from "../lib/UpdateTask";
+import TaskProps from "../types/TaskProps";
 
 function EditPage() {
   const navigate = useNavigate();
-  const [task, setTask] = useState({
-    id: 1,
-    content: "",
-    status: "",
-  });
+  const [task, setTask] = useState<TaskProps>({} as TaskProps);
   const [content, setContent] = useState("");
   const { id } = useParams();
 
-  useEffect(function () {
-    FetchTask(id).then((data) => {
-      setTask(data);
-      setContent(data.content); // Update content after task is set
-    });
-  }, []);
+  useEffect(
+    function () {
+      FetchTask(id).then((data) => {
+        setTask(data);
+        setContent(data.content); // Update content after task is set
+      });
+    },
+    [id]
+  );
 
-  function submitForm() {
+  function submitForm(e: React.FormEvent) {
+    e.preventDefault();
     const updatedTask = {
       id: task.id,
       content: content,
